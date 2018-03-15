@@ -1,0 +1,12 @@
+ul {
+    list-style: none;
+}
+
+form ul li {
+    color: #FF9800;
+    border-color: #d6e9c6;
+}
+
+#form-alert {
+    margin-top: 10px!important;
+}
