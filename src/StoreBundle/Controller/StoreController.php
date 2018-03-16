@@ -91,12 +91,28 @@ class StoreController extends Controller
      */
     public function productAction($id, $slug, Request $request)
     {
+
+        $mark_list = array(
+            'Toutes les marques',
+            'Adidas',
+            'Asics',
+            'Nike',
+            'Puma'
+        );
+
+        $other_data = array(
+            'id'    => $id,
+            'slug'  => $slug,
+            'ipAdd' => $request->getClientIp()
+        );
+
+        $data_bundle = array(
+            'mark_list' => $mark_list,
+            'other_daa' => $other_data
+        );
+
         return $this->render('store/products/product-detail.html.twig',
-            array(
-                'id'    => $id,
-                'slug'  => $slug,
-                'ipAdd' => $request->getClientIp()
-            )
+            $data_bundle
         );
     }
 }

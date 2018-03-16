@@ -6,67 +6,72 @@
 
         <div class="row">
 
-            <div class="col-md-3">
-                <p class="lead">Nos marques</p>
-                <div class="list-group">
-                    {% for mark in mark_list %}
-                        {% if mark == 'Toutes les marques' %}
-                            <a href="#" class="list-group-item active">{{ mark }}</a>
-                        {% endif %}
-                        <a href="#" class="list-group-item">{{ mark }}</a>
-                    {% endfor %}
+            {% block mark_list %}
+                <div class="col-md-3">
+                    <p class="lead">Nos marques</p>
+                    <div class="list-group">
+                        {% for mark in mark_list %}
+                            {% if mark == 'Toutes les marques' %}
+                                <a href="#" class="list-group-item active">{{ mark }}</a>
+                            {% endif %}
+                            <a href="#" class="list-group-item">{{ mark }}</a>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endblock %}
 
-            <div class="col-md-9">
 
-                <p class="lead">Nos produits " {{ mark_list[0] }} "</p>
+            {% block product_content %}
+                <div class="col-md-9">
 
-                <div class="row text-center">
+                    <p class="lead">Nos produits " {{ mark_list[0] }} "</p>
 
-                    {% for product in product_list  %}
-                        <div class="col-md-4 col-sm-6 hero-feature">
-                            <div class="thumbnail">
-                                <img src="{{ asset(product.product_image) }}" alt="{{ product.product_name }}">
-                                <div class="caption">
-                                    <h3>{{ product.product_name }}</h3>
-                                    <p>{{ product.product_description }}</p>
-                                    <p>
-                                        <span class="badge">{{ product.product_price }} €</span>
-                                        <a href="#" class="btn btn-default">Voir la fiche</a>
-                                    </p>
+                    <div class="row text-center">
+
+                        {% for product in product_list  %}
+                            <div class="col-md-4 col-sm-6 hero-feature">
+                                <div class="thumbnail">
+                                    <img src="{{ asset(product.product_image) }}" alt="{{ product.product_name }}">
+                                    <div class="caption">
+                                        <h3>{{ product.product_name }}</h3>
+                                        <p>{{ product.product_description }}</p>
+                                        <p>
+                                            <span class="badge">{{ product.product_price }} €</span>
+                                            <a href="#" class="btn btn-default">Voir la fiche</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="row text-center">
+
+                        <nav>
+                            <ul class="pagination pagination-lg">
+                                <li>
+                                    <a href="#" aria-label="Précédent">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Suivant">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
 
                 </div>
-
-                <div class="row text-center">
-
-                    <nav>
-                        <ul class="pagination pagination-lg">
-                            <li>
-                                <a href="#" aria-label="Précédent">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Suivant">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-
-                </div>
-
-            </div>
+            {% endblock %}
 
         </div>
 
